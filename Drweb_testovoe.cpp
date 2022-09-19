@@ -4,34 +4,30 @@
 // Функция должна быть написана в расчёте на работу с очень длинными строками 
 // с очень большим количеством пробелов, оптимизирована по количеству обращений к памяти.
 
-// План: 
-// работаем с текущим элементом массива
-// пока элемент не конец строки (\0)
-// ищем пробелы после символов 
-// если пробел идет после символа, запоминаем указатель на символ до пробела
-// если после того символа будут идти только пробелы, а после конец строки
-// то ставим nullptr на символ с пробелом
-// в других случаях ящем другие пробелы
-//
-
 void TrimRight(char* s)
 {
-	char current{NULL};
-	char* current_ptr = nullptr;
-	while (current = s++ != '\0')
+	char currentElem{NULL};
+	char* firstSpace_ptr{ nullptr };
+
+	// пока не дойдем до конца строки, сравниваем скопированное из строки значение
+	while ((currentElem = *s++) != '\0')
 	{
-		if (current == ' ')
-			if (!current_ptr)
-				current_ptr = s - 1;
-			else
-				current_ptr == nullptr;
-		if (current_ptr)
-			*current_ptr = '\0';
+		if (currentElem == ' ')
+		{
+			// если первый встретившийся пробел, запоминаем
+			if (firstSpace_ptr == nullptr)
+				firstSpace_ptr = s - 1;
+		}
+		else
+			firstSpace_ptr = nullptr;
 	}
+	*firstSpace_ptr = '\0';
 };
 
 int main()
 {
-
+	char array[7] = { 'a','b',' ', ' ', 'd',' '};
+	TrimRight(array);
+	std::cout << array << array;
 }
 

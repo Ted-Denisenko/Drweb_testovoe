@@ -21,12 +21,13 @@ void TrimRight(char* s)
 		else
 			firstSpace_ptr = nullptr;
 	}
-	*firstSpace_ptr = '\0';
+	if(firstSpace_ptr)
+		*firstSpace_ptr = '\0';
 };
 
 int main()
 {
-	char array[7] = { 'a','b',' ', ' ', 'd',' '};
+	char array[4] = {'a','b', ' '};
 	TrimRight(array);
 	std::cout << array << array;
 }
